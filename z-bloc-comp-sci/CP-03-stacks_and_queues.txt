@@ -1,0 +1,82 @@
+1.  What is the main difference between a stack and a queue?
+
+- Stacks are last in first out (LIFO) while queues are first in first out (FIFO).
+
+2.  What are the similarities between stacks and queues?
+
+- They are both 'lines' and they both use similar code structures.
+
+Imagine you are an engineer tasked with implementing the UNDO and REDO options
+in a word processor such as Microsoft Word. Which data structure would you use
+for each option and why?
+
+- Undo would be LIFO so a stack would be best.  Redo would be first deleted
+first put back so a queue would be appropriate.
+
+Programming Questions
+You may program the following question in any language of your choice. Before
+you begin coding, write out a plan as to how you will solve the question.
+
+Given a string, reverse it using a stack. For example, the string "Bloc!" should
+be converted to "!colB".
+
+let x = "Bloc!";
+
+function revWord (word){
+  let sepWord = word.split('');
+  let revArr = sepWord.reverse();
+  let newWord = revArr.join('');
+  return newWord;
+}
+
+console.log(revWord(x))
+
+Implement the pop method of a stack using one queue. Make a FIFO data structure
+mirror the functionality of a LIFO data structure. Since the internal list is
+not the same as defined in the checkpoint, it may help to rewrite the pseudocode
+first.
+
+let oneQueue = ['Joe', 'Lucy', 'Rob', 'Ann'];
+
+function FIFO (arr){
+  let revArr = arr.reverse();
+  let firstOut = revArr.pop();
+  return firstOut;
+}
+
+console.log(FIFO(oneQueue));
+
+To delete an item, take all of the elements in the queue one at a time and put
+them at the end of the queue, except for the last one which should be removed
+and returned.
+
+function deleteItem (item1, item2, item3, item4){
+  let newQueue = [];
+  newQueue.push(item1, item2, item3, item4);
+  return newQueue.pop();
+}
+
+console.log(deleteItem("can", "bottle", "carton", "tin"))
+
+Implement the enqueue and dequeue methods defined in the checkpoint inside
+your own Queue class.
+
+class Queue {
+  constructor(line, element) {
+  this.line = line;
+  this.element = element;
+  }
+
+  enqueue(){
+  console.log(this.line.push(element));
+  }
+
+  dequeue(){
+  console.log(this.line.shift());
+  }
+}
+
+let appleLine = new Queue(["Joe", "Mary", "Bob"], "Ann");
+appleLine.enqueue();
+let samsungLine = new Queue(["Angie", "David", "Dick"], "Lance");
+samsungLine.dequeue();
