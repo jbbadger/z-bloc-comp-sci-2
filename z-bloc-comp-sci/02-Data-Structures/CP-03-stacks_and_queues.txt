@@ -4,34 +4,34 @@
 
 2.  What are the similarities between stacks and queues?
 
-- They are both 'lines' and they both use similar code structures.
+- They are both data structures and each has insertion/deletion methods.
 
-Imagine you are an engineer tasked with implementing the UNDO and REDO options
+3.  Imagine you are an engineer tasked with implementing the UNDO and REDO options
 in a word processor such as Microsoft Word. Which data structure would you use
 for each option and why?
 
-- Undo would be LIFO so a stack would be best.  Redo would be first deleted
-first put back so a queue would be appropriate.
+- I've typed in 1, 2, 3, 4.  I hit undo twice and 4 erases then 3, meaning undo
+would be the last thing typed the first thing erased (LIFO).  I now am left with
+1, 2.  I hit redo and 3 is added back.  3 was the last deletion added but the
+first to be redone meaning it is also (LIFO).
 
 Programming Questions
+
 You may program the following question in any language of your choice. Before
 you begin coding, write out a plan as to how you will solve the question.
 
-Given a string, reverse it using a stack. For example, the string "Bloc!" should
+1.  Given a string, reverse it using a stack. For example, the string "Bloc!" should
 be converted to "!colB".
 
 let x = "Bloc!";
 
 function revWord (word){
-  let sepWord = word.split('');
-  let revArr = sepWord.reverse();
-  let newWord = revArr.join('');
-  return newWord;
+  return word.split('').reverse().join('');
 }
 
-console.log(revWord(x))
+console.log(revWord(x));
 
-Implement the pop method of a stack using one queue. Make a FIFO data structure
+2.  Implement the pop method of a stack using one queue. Make a FIFO data structure
 mirror the functionality of a LIFO data structure. Since the internal list is
 not the same as defined in the checkpoint, it may help to rewrite the pseudocode
 first.
@@ -39,36 +39,37 @@ first.
 let oneQueue = ['Joe', 'Lucy', 'Rob', 'Ann'];
 
 function FIFO (arr){
-  let revArr = arr.reverse();
-  let firstOut = revArr.pop();
-  return firstOut;
+  let popQ = [];
+  let newQ = [];
+  for(i=0; i<arr.length; i++){
+    if (i === arr.length - 1){
+      popQ.push(arr[i]);
+    } else {
+      newQ.push(arr[i]);
+    }
+   oneQueue = newQ;
+  }
+  return popQ;
 }
 
 console.log(FIFO(oneQueue));
+console.log(oneQueue);
 
 To delete an item, take all of the elements in the queue one at a time and put
 them at the end of the queue, except for the last one which should be removed
 and returned.
 
-function deleteItem (item1, item2, item3, item4){
-  let newQueue = [];
-  newQueue.push(item1, item2, item3, item4);
-  return newQueue.pop();
-}
-
-console.log(deleteItem("can", "bottle", "carton", "tin"))
-
-Implement the enqueue and dequeue methods defined in the checkpoint inside
+3.  Implement the enqueue and dequeue methods defined in the checkpoint inside
 your own Queue class.
 
 class Queue {
-  constructor(line, element) {
+  constructor(line) {
   this.line = line;
-  this.element = element;
   }
 
-  enqueue(){
-  console.log(this.line.push(element));
+  enqueue(element){
+  this.line.push(element);
+  console.log(this.line);
   }
 
   dequeue(){
@@ -76,9 +77,9 @@ class Queue {
   }
 }
 
-let appleLine = new Queue(["Joe", "Mary", "Bob"], "Ann");
-appleLine.enqueue();
-let samsungLine = new Queue(["Angie", "David", "Dick"], "Lance");
+let appleLine = new Queue(["Joe", "Mary", "Bob"]);
+appleLine.enqueue("Ann");
+let samsungLine = new Queue(["Angie", "David", "Dick"]);
 samsungLine.dequeue();
 
-// test change
+// test change 2

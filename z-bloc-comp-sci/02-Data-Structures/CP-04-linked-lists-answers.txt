@@ -1,0 +1,12 @@
+1.  What are some pros and cons of using linked lists instead of arrays?
+
+    Pros of linked lists are they take up small amounts of memory meaning huge
+    lists can be employed.  The main con of linked lists is that specific items
+    are not as easily findable as in an array.
+
+2.  Come up with a real world example of a linked list.
+
+    I work in medical coding and billing presently.  On the main billing form
+    there is a box where all the diagnosis codes get listed like an array.
+    Further on, there is a line for the procedure which has a pointer box which
+    points (links) to a specific diagnosis code.
